@@ -1,0 +1,94 @@
+.home {
+    min-height: 100vh;
+    display: flex;
+    flex-wrap: wrap;
+
+    @media (max-width: $homeColWidth) {
+        min-height: auto;
+        flex-direction: column-reverse;
+    }
+
+    .data {
+        width: 35%;
+
+        @media (max-width: $homeColWidth) {
+            width: 100%;
+        }
+
+        background-color: $homeDataBg;
+        padding: 60px;
+        // tu dodałam padding góra dół
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+        .welcome {
+            font-size: 28px;
+            color: #492d31;
+            margin: 0 0 40px 0;
+        }
+
+        h1 {
+            @include fluid-type(320px, 1600px, 30px, 100px);
+            font-weight: 800;
+            margin: 0 0 40px 0;
+            word-wrap: break-word;
+        }
+
+        p {
+            margin: 0 0 80px 0;
+            text-align: justify;
+        }
+
+        .social-media {
+            @include reset-list;
+            display: flex;
+            justify-content: left;
+            flex-wrap: wrap;
+
+            // hmmm.... nie działa mi w zakresie...
+
+            // @media (min-width: 900px),
+            // (max-width: 1600px) {
+            //     flex-direction: column;
+            // }
+
+            li {
+                margin: 0 20px 10px 0;
+
+                a {
+                    color: #492d31;
+                    text-transform: uppercase;
+                    font-size: 12px;
+                    letter-spacing: 5px;
+                }
+            }
+
+            li:last-child {
+                margin-right: 0;
+            }
+        }
+    }
+
+    .bg {
+        width: 65%;
+
+        @media (max-width: $homeColWidth) {
+            width: 100%;
+        }
+
+        background-image: url("../img/amy stone.jpg");
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center center;
+
+        img {
+            display: none;
+
+            @media (max-width: $homeColWidth) {
+                display: block;
+                width: 100%;
+            }
+        }
+    }
+}

@@ -1,0 +1,306 @@
+.main-menu {
+    background-color: $navBgColor;
+    width: $navWidth;
+    position: fixed;
+    height: 100%;
+    top: 0;
+    left: 0;
+    padding: 150px 60px 30px 60px;
+    transition: 0.4s;
+
+    @media (max-width: $hideMenuWidth) {
+        padding: 30px;
+        width: 90px;
+    }
+
+    @media (max-width: $menuUpWidth) {
+        width: 100%;
+        height: 60px;
+        padding: 15px;
+    }
+
+    .hamburger {
+        cursor: pointer;
+        width: 30px;
+        height: 20px;
+        outline: none;
+        border: none;
+        background: none;
+        position: relative;
+        z-index: 7;
+        top: -120px;
+        left: -30px;
+
+        @media (max-width: $hideMenuWidth) {
+            top: 0;
+            left: 0;
+        }
+
+        &:hover {
+
+            span {
+                right: 0;
+            }
+
+            // right 0
+
+            &::before {
+                right: 0;
+            }
+        }
+
+        &.is-active {
+
+            span {
+                width: 100%;
+                transform: rotate(45deg);
+                top: 7px;
+            }
+
+            &::before {
+                display: none;
+            }
+
+            &::after {
+                transform: rotate(-45deg);
+                top: 7px;
+            }
+        }
+
+        span {
+            display: block;
+            width: 75%;
+            height: 3px;
+            background-color: $dataTextColor;
+            position: absolute;
+            top: 0;
+            left: 0;
+            transition: 0.4s;
+        }
+
+        &::before {
+            content: '';
+            width: 50%;
+            height: 3px;
+            background-color: $dataTextColor;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            left: 0;
+            transition: 0.4s;
+        }
+
+        &::after {
+            content: '';
+            width: 100%;
+            height: 3px;
+            background-color: $dataTextColor;
+            position: absolute;
+            top: 100%;
+            transform: translateY(-100%);
+            left: 0;
+            transition: 0.4s;
+        }
+    }
+
+    .navigation {
+        @include reset-list;
+        z-index: 5;
+        background-color: $headerColor;
+        height: 100%;
+        width: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        transform: translateX(-100%);
+        overflow: hidden;
+        transition: 0.4s;
+        // padding: 275px 60px 30px 60px;
+        // nie da rady tego sensownie ustawić z tym pod spodem...
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 120px 60px;
+
+        &.menu-open {
+            transform: translateX(0);
+        }
+
+        li {
+            margin: 0 0 20px 0;
+
+            a {
+                color: $navTextColor;
+                font-size: 28px;
+                font-weight: 700;
+                position: relative;
+
+                &:hover::after {
+                    width: 110%;
+                }
+
+                &::after {
+                    content: '';
+                    display: block;
+                    width: 0;
+                    height: 16px;
+                    background-color: $navNumColor;
+                    position: absolute;
+                    top: 55%;
+                    left: -5%;
+                    z-index: -1;
+                    transition: 0.3s;
+                }
+            }
+        }
+    }
+
+    .menu {
+        height: 100%;
+        // a czemu tutaj high 100%?
+        // no żeby nadać rozmiar rodzica, a nie tyle co zajmuje
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+        @media (max-width: $hideMenuWidth) {
+            display: none;
+        }
+
+        &.menu-open {
+
+            .pagination {
+
+                @media (max-height: $menuNumHide) {
+                    display: none;
+                }
+            }
+
+            .animations {
+
+                @media (max-height: $menuNumHide) {
+                    display: none;
+                }
+            }
+        }
+
+        .pagination {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            z-index: 10;
+            margin: 0 0 60px 0;
+
+            .small-num {
+                color: $navNumColor;
+                font-weight: 700;
+            }
+
+            span {
+                display: block;
+                width: 100px;
+                height: 3px;
+                margin: 0 10px;
+                background-color: $dataTextColor;
+            }
+
+            div {
+                color: $dataTextColor;
+                font-weight: 700;
+            }
+        }
+
+        .data {
+
+            .label {
+                color: $headerColor;
+                text-transform: uppercase;
+                font-size: 12px;
+                font-weight: 300;
+                letter-spacing: 5px;
+                line-height: 0.8;
+                margin: 0;
+            }
+
+            p {
+                color: $dataTextColor;
+                margin: 0 0 30px 0;
+
+                &:last-of-type {
+                    margin: 0;
+                }
+            }
+
+            img {
+                margin: 60px 0 0 0;
+                width: 100%;
+            }
+        }
+
+        .animations {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 40px 0 0 0;
+
+
+            .big-num {
+                font-size: 150px;
+                font-weight: 700;
+                color: transparent;
+                -webkit-text-stroke: 3px $navNumColor;
+                z-index: 15;
+            }
+
+            .scroll {
+                width: 50px;
+                height: 100px;
+                border: 3px solid $navNumColor;
+                border-radius: 25px;
+                position: relative;
+                right: -85px;
+
+                &::before {
+                    content: '';
+                    display: block;
+                    width: 10px;
+                    height: 10px;
+                    background-color: $navNumColor;
+                    border-radius: 50%;
+                    position: absolute;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    top: 10%;
+                    animation-name: fade-down;
+                    animation-duration: 2s;
+                    animation-iteration-count: infinite;
+
+                    @keyframes fade-down {
+                        0% {
+                            top: 10%;
+                            opacity: 100%;
+                        }
+
+                        100% {
+                            top: 80%;
+                            opacity: 0%;
+                        }
+                    }
+                }
+
+                &::after {
+                    content: '';
+                    display: block;
+                    width: 70px;
+                    height: 120px;
+                    background-color: $navBgColor;
+                    border-radius: 35px;
+                    position: absolute;
+                    top: -13px;
+                    left: -13px;
+                    z-index: -1;
+                }
+            }
+        }
+    }
+}

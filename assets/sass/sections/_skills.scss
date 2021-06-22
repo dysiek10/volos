@@ -1,0 +1,46 @@
+.skills {
+    padding: 75px 0;
+
+    .diag-circles {
+        display: flex;
+        flex-wrap: wrap;
+        margin: 0 -15px;
+    }
+
+    .item {
+        padding: 0 15px;
+
+        .circle {
+            position: relative;
+
+            .circle-base {
+                position: absolute;
+                z-index: 1;
+                left: 15px;
+                top: 15px;
+                width: 220px;
+                height: 220px;
+                border: 15px solid $skillBaseColor;
+                border-radius: 50%;
+            }
+
+            .circle-range {
+                position: absolute;
+                width: 250px;
+                height: 250px;
+                border: 45px solid $headerColor;
+                border-radius: 50%;
+            }
+
+            .circle-number {
+                position: absolute;
+                left: 125px;
+                top: 125px;
+                transform: translateX(-50%) translateY(-50%);
+                font-weight: 700;
+                font-size: 45px;
+                color: $headerColor;
+            }
+        }
+    }
+}

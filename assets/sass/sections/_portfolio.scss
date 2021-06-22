@@ -1,0 +1,111 @@
+.portfolio {
+
+    padding: 75px 0 45px 0;
+
+    .photos {
+        display: flex;
+        flex-wrap: wrap;
+        margin: 0 -15px;
+
+        .photo {
+            width: calc(100%/3);
+            padding: 0 15px;
+            margin: 0 0 30px 0;
+
+            @media (max-width: $portfColWidth) {
+                width: 50%;
+            }
+
+            @media (max-width: 600px) {
+                width: 100%;
+            }
+
+            .see-more {
+                position: relative;
+                display: block;
+                overflow: hidden;
+                // !!!!!!!!!!!!!!!!!!!!
+
+                img {
+                    display: block;
+                    width: 100%;
+                }
+
+                .cover {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    padding: 20px;
+
+                    &:after {
+                        content: '';
+                        background-color: $headerColor;
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        width: 100%;
+                        height: 100%;
+                        transform: translateX(-100%);
+                        transition: 0.4s;
+                    }
+
+                    &:hover .text {
+                        transform: translateX(0);
+                    }
+
+                    &:hover::after {
+                        transform: translateX(0);
+                    }
+
+                    .text {
+                        position: absolute;
+                        z-index: 1;
+                        bottom: 30px;
+                        left: 30px;
+                        width: 100%;
+                        transform: translateX(-100%);
+                        transition: 0.4s;
+
+                        h2,
+                        p {
+                            color: $dataTextColor;
+                            margin: 0;
+                        }
+
+                    }
+
+                }
+
+            }
+
+        }
+
+    }
+
+}
+
+// .btn {
+//     position: relative;
+// }
+
+// .btn span {
+//     position: relative;
+//     z-index: 2;
+// }
+
+// .btn::before {
+//     content: "";
+//     background-color: darkgoldenrod;
+//     position: absolute;
+//     top: 0;
+//     left: 0;
+//     width: 0;
+//     height: 100%;
+//     transition: 0.4s;
+// }
+
+// .btn:hover::before {
+//     width: 51%;
+// }
