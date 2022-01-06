@@ -1,6 +1,7 @@
 let hamburger = document.querySelector('.hamburger');
 let navigation = document.querySelector('.navigation');
 let menu = document.querySelector('.menu');
+// i czemu przysłania nawigację??
 
 hamburger.addEventListener('click', function () {
     hamburger.classList.toggle('is-active');
@@ -8,20 +9,22 @@ hamburger.addEventListener('click', function () {
     menu.classList.toggle('menu-open');
 })
 
-// let bigNum = document.querySelector('.big-num');
-
-// // new object with screen as root element
-// var observer = new IntersectionObserver(function (entries) {
-//     //   callback code
-
-//     if (entries[0]['isIntersecting'] === true) {
-//         if (entries[0]['isIntersectingRation'] === 1)
-// // wtedy co?
-// else if (entries[0]['isIntersectingRatio'] > 0.5)
+// let sections = document.querySelectorAll('.section');
+// sections.forEach((item) => {
+//     item.addEventListener('click', function () {
+//         hamburger.classList.toggle('is-active');
+//         navigation.classList.toggle('menu-open');
+//         menu.classList.toggle('menu-open');
+//     })
+// })
 
 
-// });
-
-
-
-observer.observe(document.querySelector('section'));
+// czemu nie działa by class name? - rozwiązanie
+let sections2 = document.getElementsByClassName('section');
+for (let i = 0; i < sections2.length; i++) {
+    sections2[i].addEventListener('click', function () {
+        hamburger.classList.toggle('is-active');
+        navigation.classList.toggle('menu-open');
+        menu.classList.toggle('menu-open');
+    })
+}
