@@ -1,3 +1,3 @@
-# Volos Test Project
+# volos
 
-Link do Github Pages: https://dysiek10.github.io/volos/
+Link ti Github Pages: https://dysiek10.github.io/volos/
